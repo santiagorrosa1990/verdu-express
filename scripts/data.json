@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Naranja",
+        "price": "$50",
+        "unit": "kg"
+    },
+    {
+        "name": "Pera",
+        "price": "$30",
+        "unit": "kg"
+    },
+    {
+        "name": "Acelga",
+        "price": "$25",
+        "unit": "atado"
+    },
+    {
+        "name": "Bergamota",
+        "price": "$50",
+        "unit": "kg"
+    },
+    {
+        "name": "Uva",
+        "price": "$30",
+        "unit": "kg"
+    },
+    {
+        "name": "Cebolla Morada",
+        "price": "$25",
+        "unit": "kg"
+    }
+]

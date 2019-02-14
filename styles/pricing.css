@@ -1,0 +1,38 @@
+html {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+  
+  .pricing-header {
+    max-width: 700px;
+  }
+  
+  .card-deck .card {
+    min-width: 220px;
+  }
+
+  body {
+    /*background-image: url("../images/frutas2.jpg");*/
+    background-color: #e6ffb7;
+   }
+
+   .card {
+    /*background-image: url("../images/frutas.jpg");*/
+    background-color: #ffffff;
+   }
+
+   .header {
+    background-image: url("../images/frutas2.jpg");
+    /*background-color: #83cf3b;*/
+   }
+
+
+   
