@@ -7,7 +7,9 @@ $(document).ready(function () {
             method: "POST",
             url: "./model/logic.php",
             success: function (data) {
-                //console.log(data);
+                console.log(data);
+                console.log(data);
+
             },
             error: function () {
                 console.log("Error ajax logic.php");
@@ -15,6 +17,4 @@ $(document).ready(function () {
         });
         return false;
     }
-
-
 });
