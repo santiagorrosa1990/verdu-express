@@ -11,7 +11,7 @@
     },
     {
         "name": "Acelga",
-        "price": "$25",
+        "price": "$28,5",
         "unit": "atado"
     },
     {
@@ -21,12 +21,22 @@
     },
     {
         "name": "Uva",
-        "price": "$30",
+        "price": "$55",
         "unit": "kg"
     },
     {
         "name": "Cebolla Morada",
         "price": "$25",
         "unit": "kg"
+    },
+    {
+        "name": "Pimiento Verde",
+        "price": "$25",
+        "unit": "unidad"
+    },
+    {
+        "name": "Pimiento Rojo",
+        "price": "$65",
+        "unit": "unidad"
     }
 ]

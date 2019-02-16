@@ -2,15 +2,39 @@ $(document).ready(function () {
 
     getData();
 
+    getAddress();
+
+    function getAddress(){
+        $.ajax({
+            cache: false,
+            method: "GET",
+            url: "./data/users.json",
+            dataType: "json",
+            success: function (data) {
+                FB.getLoginStatus(function(response) {
+                    if(response.status == "connected"){
+                        var id = response.authResponse.userID;
+                        console.log("Domicilio: "+data[id].address);
+                    } 
+                });
+            },
+            error: function () {
+                console.log("Error al cargar el listado");
+            }
+        });
+        return false;
+    }
+
     function getData() {
         $.ajax({
+            cache: false,
             method: "GET",
-            url: "./scripts/data.json",
+            url: "./data/items.json",
             success: function (data) {
                 buildCards(data);
             },
             error: function () {
-                console.log("Error ajax logic.php");
+                console.log("Error al cargar el listado");
             }
         });
         return false;
@@ -23,6 +47,7 @@ $(document).ready(function () {
             count = count + 1;
             if (count == 3) {
                 getCardDeckTemplate()
+                count = 0;
             }
         });
     }

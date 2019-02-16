@@ -19,20 +19,24 @@ html {
     min-width: 220px;
   }
 
-  body {
-    /*background-image: url("../images/frutas2.jpg");*/
+  .hidden {
+    visibility: hidden;
+  }
+
+  /*body {
+    /*background-image: url("../images/frutas2.jpg");
     background-color: #e6ffb7;
    }
 
    .card {
-    /*background-image: url("../images/frutas.jpg");*/
+    background-image: url("../images/frutas.jpg");
     background-color: #ffffff;
    }
 
    .header {
     background-image: url("../images/frutas2.jpg");
-    /*background-color: #83cf3b;*/
-   }
+    background-color: #83cf3b;
+   }*/
 
 
    
