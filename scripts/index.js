@@ -2,27 +2,37 @@ $(document).ready(function () {
 
     getData();
 
-    getAddress();
+    //getAddress();
 
-    function getAddress(){
+    $('.support').on('click', function () {
+        var userAddress = getAddress();
+        toastr.info("Domicilio: " + userAddress);
+    });
+
+    function getAddress() {
+        var userAddress;
         $.ajax({
+            async: false, //Ver de usar un wait
             cache: false,
             method: "GET",
             url: "./data/users.json",
             dataType: "json",
             success: function (data) {
-                FB.getLoginStatus(function(response) {
-                    if(response.status == "connected"){
+                FB.getLoginStatus(function (response) {
+                    if (response.status == "connected") {
                         var id = response.authResponse.userID;
-                        console.log("Domicilio: "+data[id].address);
-                    } 
+                        userAddress = data[id].address;
+                    } else {
+                        console.log("No hay dirección");
+                        userAddress = "No cargada";
+                    }
                 });
             },
             error: function () {
                 console.log("Error al cargar el listado");
             }
         });
-        return false;
+        return userAddress;
     }
 
     function getData() {

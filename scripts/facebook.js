@@ -9,6 +9,7 @@ window.fbAsyncInit = function () {
     
     FB.getLoginStatus(function(response) {
         if(response.status == "connected"){
+            toastr.success('Bienvenido');
             console.log("Sesion iniciada");
         } else {
             $('.facebook-btn').css('visibility','visible');
