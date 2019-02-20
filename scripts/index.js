@@ -1,13 +1,38 @@
 $(document).ready(function () {
 
+    /////Cosas que se lanzan automaticamente al cargar la pagina
+
+    //Duracion del efectito del boton flotante
+    $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
     getData();
 
-    //getAddress();
+    var test = {
+        banana: {
+            cant : 2,
+            precio: "55,20"
+        },
+        manzana: {
+            cant: 4,
+            precio: "65,22"
+        }
+    };
+    
+    var cart = localStorage.cart;
+    cart = cart + JSON.stringify(test);
+    localStorage.cart = cart;
+    
+    /////////////////
 
     $('.support').on('click', function () {
         var userAddress = getAddress();
         toastr.info("Domicilio: " + userAddress);
     });
+
+    $('.st-button-main').on('click', function(){
+        console.log("Boton flotante clickeado");
+        $('#current-cart').html(localStorage.cart);
+    });
+
 
     function getAddress() {
         var userAddress;
