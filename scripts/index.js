@@ -7,24 +7,9 @@ $(document).ready(function () {
 
     getData();
 
-    var dataSet = [
-        ["Banana", "$55,20", "2"],
-        ["Pomelo Rosado", "70,00", "2"],
-        ["Maracuyá", "62,00", "1"]
-    ]
 
-    $('.cart').DataTable({
-        data: dataSet,
-        searching: false,
-        paging: false,
-        info: false,
-        responsive: true,
-        columns: [
-            { title: "Articulo" },
-            { title: "Precio" },
-            { title: "Cantidad" }
-        ]
-    });
+
+
 
     /////////////////
 
@@ -35,9 +20,35 @@ $(document).ready(function () {
 
     $('.st-button-main').on('click', function () {
         console.log("Boton flotante clickeado");
-        $('#current-cart').html(localStorage.cart);
+        //getCartItems();
+        var dataSet = [
+            ["Banana", "$55", 2],
+            ["Pomelo Rosado", "70", 2],
+            ["Maracuyá", "62", 2],
+            ["Cañamo", "50", 2]
+        ]
+        var total = 0;
+        dataSet.forEach(function (element) {
+            total = total + element[2];
+        });
+        console.log(total);
+        drawCurrentCart(dataSet);
     });
 
+    function drawCurrentCart(dataSet) {
+        $('#cart').DataTable({
+            data: dataSet,
+            searching: false,
+            paging: false,
+            info: false,
+            responsive: true, //Importa datatables responsive
+            columns: [
+                { title: "Articulo" },
+                { title: "Precio" },
+                { title: "Cantidad" }
+            ]
+        });
+    }
 
     function getAddress() {
         var userAddress;
