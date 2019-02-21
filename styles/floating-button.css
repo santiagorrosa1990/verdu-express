@@ -27,8 +27,8 @@ div.st-actionContainer li{
 .st-panel{
 	width: auto;
 	margin-bottom: 10%;
-	background-color: #757575;
-	color: white;
+	background-color: #ffffff;
+	color: rgb(43, 43, 43);
 	border: 2px solid #eee;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	border-radius: 5px;
@@ -69,7 +69,7 @@ div.st-panel{
 }
 
 .st-btn-container{
-	background:#D15D36;
+	background:rgb(30, 190, 92);
 	width:60px;
 	height:60px;
 	border-radius:100%;
@@ -118,7 +118,7 @@ div.st-panel{
 
 /*option grid in panel*/
 
-.grid {
+/*.grid {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -137,4 +137,4 @@ div.st-panel{
 .gridChild:hover {
 	background-color: #eee;
 	color: black;
-}
+}*/

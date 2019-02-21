@@ -4,23 +4,28 @@ $(document).ready(function () {
 
     //Duracion del efectito del boton flotante
     $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
+
     getData();
 
-    var test = {
-        banana: {
-            cant : 2,
-            precio: "55,20"
-        },
-        manzana: {
-            cant: 4,
-            precio: "65,22"
-        }
-    };
-    
-    var cart = localStorage.cart;
-    cart = cart + JSON.stringify(test);
-    localStorage.cart = cart;
-    
+    var dataSet = [
+        ["Banana", "$55,20", "2"],
+        ["Pomelo Rosado", "70,00", "2"],
+        ["Maracuyá", "62,00", "1"]
+    ]
+
+    $('.cart').DataTable({
+        data: dataSet,
+        searching: false,
+        paging: false,
+        info: false,
+        responsive: true,
+        columns: [
+            { title: "Articulo" },
+            { title: "Precio" },
+            { title: "Cantidad" }
+        ]
+    });
+
     /////////////////
 
     $('.support').on('click', function () {
@@ -28,7 +33,7 @@ $(document).ready(function () {
         toastr.info("Domicilio: " + userAddress);
     });
 
-    $('.st-button-main').on('click', function(){
+    $('.st-button-main').on('click', function () {
         console.log("Boton flotante clickeado");
         $('#current-cart').html(localStorage.cart);
     });
