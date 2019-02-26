@@ -1,17 +1,51 @@
 $(document).ready(function () {
 
-    /////Cosas que se lanzan automaticamente al cargar la pagina
-
+    
+    var cartDatatable = null;
     //Duracion del efectito del boton flotante
     $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
 
     getData();
 
+    getAddresses("987654321");
 
+    //postAddresses("987654321", [{"neighborhood":"Alberdi", "address":"Costanera 1234"}]);
 
+    function getAddresses(facebookId){
+        var user_Id = "id="+facebookId;
+        $.ajax({
+            async: false, 
+            cache: false,
+            method: "POST",
+            url: "../model/user-get.php",
+            data: user_Id,
+            success: function (data) {
+                console.log(JSON.parse(data));
+            },
+            error: function () {
+                console.log("Error al obtener user-get.php");
+            }
+        });
 
+    }
 
-    /////////////////
+    function postAddresses(facebookId, jsonAddresses){
+        request = "id="+facebookId+"&addresses="+JSON.stringify(jsonAddresses);
+        $.ajax({
+            async: false, 
+            cache: false,
+            method: "POST",
+            url: "../model/user-post.php",
+            data: request,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log("Error al obtener user-get.php");
+            }
+        });
+
+    }
 
     $('.support').on('click', function () {
         var userAddress = getAddress();
