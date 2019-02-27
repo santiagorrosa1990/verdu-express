@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    
+
     var cartDatatable = null;
     //Duracion del efectito del boton flotante
     $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
@@ -11,10 +11,10 @@ $(document).ready(function () {
 
     //postAddresses("987654321", [{"neighborhood":"Alberdi", "address":"Costanera 1234"}]);
 
-    function getAddresses(facebookId){
-        var user_Id = "id="+facebookId;
+    function getAddresses(facebookId) {
+        var user_Id = "id=" + facebookId;
         $.ajax({
-            async: false, 
+            async: false,
             cache: false,
             method: "POST",
             url: "../model/user-get.php",
@@ -29,10 +29,10 @@ $(document).ready(function () {
 
     }
 
-    function postAddresses(facebookId, jsonAddresses){
-        request = "id="+facebookId+"&addresses="+JSON.stringify(jsonAddresses);
+    function postAddresses(facebookId, jsonAddresses) {
+        request = "id=" + facebookId + "&addresses=" + JSON.stringify(jsonAddresses);
         $.ajax({
-            async: false, 
+            async: false,
             cache: false,
             method: "POST",
             url: "../model/user-post.php",
@@ -126,13 +126,14 @@ $(document).ready(function () {
     }
 
     function buildCards(data) {
-        var count = 0;
+        var rowCount = 0;
         data.forEach(function (element) {
-            $(".container").find(".card-deck:last").append(getCardTemplate(element.name, element.price, element.unit));
-            count = count + 1;
-            if (count == 3) {
+            rowCount = rowCount + 1;
+            $(".container").find(".card-deck:last")
+                .append(getCardTemplate(element.name, element.price, element.unit, element.key));
+            if (rowCount == 3) {
                 getCardDeckTemplate()
-                count = 0;
+                rowCount = 0;
             }
         });
     }
@@ -141,10 +142,10 @@ $(document).ready(function () {
         $(' <div class="card-deck mb-3 text-center"> </div>').insertBefore('.deck-footer');
     }
 
-    function getCardTemplate(name, price, unit) {
-        var card = '<div class="card mb-4 shadow-sm">' +
+    function getCardTemplate(name, price, unit, key) {
+        var card = '<div id="' + key + '" class="card mb-4 shadow-sm">' +
             '<div class="card-header">' +
-            '<h4 class="my-0 font-weight-normal">' + name + '</h4>' +
+            '<h4 class="my-0 name="' + name + '" id="' + key + '" font-weight-normal">' + name + '</h4>' +
             '</div>' +
             '<div class="card-body">' +
             '<h1 class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
@@ -154,7 +155,24 @@ $(document).ready(function () {
             '<li>Email support</li>' +
             '<li>Help center access</li>' +
             '</ul>' +
-            '<button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>' +
+            '<div class="col-lg-2">' +
+            '<div class="input-group">' +
+            '<span class="input-group-btn">' +
+            '<button type="button" id="' + key + '" class="quantity-left-minus btn btn-outline-dark btn-number"' +
+            'data-type="minus" data-field="">' +
+            '<i class="fa fa-minus fa-lg" aria-hidden="true"></i>' +
+            '</button>' +
+            '</span>' +
+            '<input type="text" id="' + key + '" name="quantity" class="form-control input-number"' +
+            'value="10" min="1" max="100">' +
+            '<span class="input-group-btn">' +
+            '<button type="button" id="' + key + '" class="quantity-right-plus btn btn-outline-dark btn-number"' +
+            ' data-type="plus" data-field="">' +
+            '<i class="fa fa-plus fa-lg" aria-hidden="true"></i>' +
+            '</button>' +
+            '</span>' +
+            '</div>' +
+            '</div>' +
             '</div>' +
             '</div>'
 
