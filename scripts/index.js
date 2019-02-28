@@ -155,7 +155,7 @@ $(document).ready(function () {
             '<li>Email support</li>' +
             '<li>Help center access</li>' +
             '</ul>' +
-            '<div class="col-lg-2">' +
+            '<div class="counter col-lg-2">' +
             '<div class="input-group">' +
             '<span class="input-group-btn">' +
             '<button type="button" id="' + key + '" class="quantity-left-minus btn btn-outline-dark btn-number"' +
@@ -164,7 +164,7 @@ $(document).ready(function () {
             '</button>' +
             '</span>' +
             '<input type="text" id="' + key + '" name="quantity" class="form-control input-number"' +
-            'value="10" min="1" max="100">' +
+            'value="0" min="1" max="100">' +
             '<span class="input-group-btn">' +
             '<button type="button" id="' + key + '" class="quantity-right-plus btn btn-outline-dark btn-number"' +
             ' data-type="plus" data-field="">' +
@@ -178,4 +178,29 @@ $(document).ready(function () {
 
         return card;
     }
+
+    //////BOTONES  MAS Y MENOS///////
+
+    $(document).on('click', '.quantity-right-plus', function (e) {
+        e.preventDefault();
+        var key = $(this).attr('id');
+        console.log(JSON.stringify(key));
+        var quantity = parseInt($('input', '#' + key).val());
+        if(quantity < 50){
+        quantity = $('input', '#' + key).val(quantity + 1);
+        }
+        return false;
+    });
+
+    $(document).on('click', '.quantity-left-minus', function (e) {
+        e.preventDefault();
+        var key = $(this).attr('id');
+        console.log(JSON.stringify(key));
+        var quantity = parseInt($('input', '#' + key).val());
+        if(quantity > 0){
+            quantity = $('input', '#' + key).val(quantity - 1);
+        }
+        return false;
+    });
+
 });
