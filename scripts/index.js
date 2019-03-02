@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-
+    var currentCart = null;
     var cartDatatable = null;
     //Duracion del efectito del boton flotante
     $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
@@ -52,6 +52,7 @@ $(document).ready(function () {
         toastr.info("Domicilio: " + userAddress);
     });
 
+    //BOTON FLOTANTE
     $('.st-button-main').on('click', function () {
         console.log("Boton flotante clickeado");
         //getCartItems();
@@ -70,18 +71,22 @@ $(document).ready(function () {
     });
 
     function drawCurrentCart(dataSet) {
-        $('#cart').DataTable({
-            data: dataSet,
-            searching: false,
-            paging: false,
-            info: false,
-            responsive: true, //Importa datatables responsive
-            columns: [
-                { title: "Articulo" },
-                { title: "Precio" },
-                { title: "Cantidad" }
-            ]
-        });
+        if (cartDatatable == null) {
+            cartDatatable = $('#cart').DataTable({
+                data: dataSet,
+                searching: false,
+                paging: false,
+                info: false,
+                responsive: true, //Importa datatables responsive
+                columns: [
+                    { title: "Articulo" },
+                    { title: "Precio" },
+                    { title: "Cantidad" }
+                ]
+            });
+        } else {
+            cartDatatable.clear().rows.add(dataSet).draw();
+        }
     }
 
     function getAddress() {
@@ -116,6 +121,7 @@ $(document).ready(function () {
             method: "GET",
             url: "./data/items.json",
             success: function (data) {
+                localStorage.data = JSON.stringify(data);
                 buildCards(data);
             },
             error: function () {
@@ -145,10 +151,10 @@ $(document).ready(function () {
     function getCardTemplate(name, price, unit, key) {
         var card = '<div id="' + key + '" class="card mb-4 shadow-sm">' +
             '<div class="card-header">' +
-            '<h4 class="my-0 name="' + name + '" id="' + key + '" font-weight-normal">' + name + '</h4>' +
+            '<h4 class="my-0 card-name" name="' + name + '" id="' + key + '" font-weight-normal">' + name + '</h4>' +
             '</div>' +
             '<div class="card-body">' +
-            '<h1 class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
+            '<h1 id="' + key + '" price="' + price + '" unit="' + unit + '" class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
             '<ul class="list-unstyled mt-3 mb-4">' +
             '<li>10 users included</li>' +
             '<li>2 GB of storage</li>' +
@@ -182,25 +188,60 @@ $(document).ready(function () {
     //////BOTONES  MAS Y MENOS///////
 
     $(document).on('click', '.quantity-right-plus', function (e) {
-        e.preventDefault();
         var key = $(this).attr('id');
-        console.log(JSON.stringify(key));
         var quantity = parseInt($('input', '#' + key).val());
-        if(quantity < 50){
-        quantity = $('input', '#' + key).val(quantity + 1);
+        if (quantity < 50) {
+            $('input', '#' + key).val(quantity + 1);
+            quantity = parseInt($('input', '#' + key).val());
         }
+        addOrUpdateToCart(key, quantity);
         return false;
     });
 
-    $(document).on('click', '.quantity-left-minus', function (e) {
-        e.preventDefault();
+    $(document).on('click', '.quantity-left-minus', function () {
         var key = $(this).attr('id');
-        console.log(JSON.stringify(key));
         var quantity = parseInt($('input', '#' + key).val());
-        if(quantity > 0){
-            quantity = $('input', '#' + key).val(quantity - 1);
+        if (quantity > 0) {
+            $('input', '#' + key).val(quantity - 1);
+            quantity = parseInt($('input', '#' + key).val());
         }
+        addOrUpdateToCart(key, quantity);
         return false;
     });
+
+    function addOrUpdateToCart(key, quantity) {
+        //var dataSet = [
+        //     ["Banana", "$55", 2],
+        //     ["Pomelo Rosado", "70", 2],
+        //     ["Maracuyá", "62", 2],
+        //     ["Cañamo", "50", 2]
+        // ]
+        //currentCart = localStorage.cart;
+        console.log([
+            $('.card-name', '#' + key).attr('name'),
+            $('.pricing-card-title', '#' + key).attr('price'),
+            quantity
+        ]);
+        if (currentCart == undefined) {
+            currentCart = [];
+            itemToBeAdded = [
+                $('.card-name', '#' + key).attr('name'),
+                $('.pricing-card-title', '#' + key).attr('name'),
+                $('.pricing-card-title', '#' + key).attr('name'),
+                quantity
+            ]
+
+
+        }
+
+
+
+        //cart.push($('.card-name', '#' + key).attr('name'));
+        //console.log($('.card-name', '#' + key).attr('name'));
+
+    }
+
+
+
 
 });
