@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    var currentCart = null;
     var cartDatatable = null;
     //Duracion del efectito del boton flotante
     $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
@@ -38,10 +37,10 @@ $(document).ready(function () {
             url: "../model/user-post.php",
             data: request,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
             },
             error: function () {
-                console.log("Error al obtener user-get.php");
+                //console.log("Error al obtener user-get.php");
             }
         });
 
@@ -52,23 +51,24 @@ $(document).ready(function () {
         toastr.info("Domicilio: " + userAddress);
     });
 
-    //BOTON FLOTANTE
+    //FLOATING BUTTON
     $('.st-button-main').on('click', function () {
-        console.log("Boton flotante clickeado");
-        //getCartItems();
-        var dataSet = [
-            ["Banana", "$55", 2],
-            ["Pomelo Rosado", "70", 2],
-            ["Maracuyá", "62", 2],
-            ["Cañamo", "50", 2]
-        ]
+        var dataSet = getCartItems();
         var total = 0;
         dataSet.forEach(function (element) {
             total = total + element[2];
         });
-        console.log(total);
+        //console.log(total);
         drawCurrentCart(dataSet);
     });
+
+    function getCartItems() {
+        if (localStorage.cart != undefined) {
+            return JSON.parse(localStorage.cart);
+        } else {
+            return [];
+        }
+    }
 
     function drawCurrentCart(dataSet) {
         if (cartDatatable == null) {
@@ -77,8 +77,9 @@ $(document).ready(function () {
                 searching: false,
                 paging: false,
                 info: false,
-                responsive: true, //Importa datatables responsive
+                responsive: true,
                 columns: [
+                    { title: "Quitar" },
                     { title: "Articulo" },
                     { title: "Precio" },
                     { title: "Cantidad" }
@@ -185,7 +186,7 @@ $(document).ready(function () {
         return card;
     }
 
-    //////BOTONES  MAS Y MENOS///////
+    //////ADD REMOVE BUTTONS///////
 
     $(document).on('click', '.quantity-right-plus', function (e) {
         var key = $(this).attr('id');
@@ -209,39 +210,39 @@ $(document).ready(function () {
         return false;
     });
 
+    function getRedCrossIcon(key){
+        //la key es para asignarle el producto a la cruz
+        return '<i class="fa fa-shopping-cart fa-lg cart-item" aria-hidden="true"></i>';
+    }
+
     function addOrUpdateToCart(key, quantity) {
-        //var dataSet = [
-        //     ["Banana", "$55", 2],
-        //     ["Pomelo Rosado", "70", 2],
-        //     ["Maracuyá", "62", 2],
-        //     ["Cañamo", "50", 2]
-        // ]
-        //currentCart = localStorage.cart;
-        console.log([
+        var currentCart;
+        itemToBeAdded = [
+            getRedCrossIcon(key),
             $('.card-name', '#' + key).attr('name'),
             $('.pricing-card-title', '#' + key).attr('price'),
             quantity
-        ]);
-        if (currentCart == undefined) {
+        ]
+        if (localStorage.cart == undefined) {
             currentCart = [];
-            itemToBeAdded = [
-                $('.card-name', '#' + key).attr('name'),
-                $('.pricing-card-title', '#' + key).attr('name'),
-                $('.pricing-card-title', '#' + key).attr('name'),
-                quantity
-            ]
-
-
+            currentCart.push = itemToBeAdded;
+        } else {
+            var present = false;
+            currentCart = JSON.parse(localStorage.cart);
+            currentCart.forEach(function (element) {
+                if (itemToBeAdded[1] === element[1]) {
+                    //Si ya existe el item en el carrito, sólo actualizo el precio y la cantidad
+                    element[2] = itemToBeAdded[2];
+                    element[3] = itemToBeAdded[3];
+                    present = true;
+                }
+            });
+            if (!present) {
+                currentCart.push(itemToBeAdded);
+            }
         }
-
-
-
-        //cart.push($('.card-name', '#' + key).attr('name'));
-        //console.log($('.card-name', '#' + key).attr('name'));
-
+        console.log(currentCart);
+        localStorage.cart = JSON.stringify(currentCart);
     }
-
-
-
 
 });

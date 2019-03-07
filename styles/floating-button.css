@@ -25,7 +25,7 @@ div.st-actionContainer li{
 }
 
 .st-panel{
-	width: auto;
+	width: 300px;
 	margin-bottom: 10%;
 	background-color: #ffffff;
 	color: rgb(43, 43, 43);
@@ -38,7 +38,6 @@ div.st-actionContainer li{
 div.st-panel{
 	font-family: Roboto;
 	font-size: 15px;
-
 }
 
 .st-panel-header{
