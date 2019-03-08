@@ -54,13 +54,29 @@ $(document).ready(function () {
     //FLOATING BUTTON
     $('.st-button-main').on('click', function () {
         var dataSet = getCartItems();
-        var total = 0;
-        dataSet.forEach(function (element) {
-            total = total + element[2];
-        });
-        //console.log(total);
+        dataSet = toDatatableFormat(dataSet);
+        // var total = 0;
+        // dataSet.forEach(function (element) {
+        //     total = total + element[2];
+        // });
+        // console.log(total);
         drawCurrentCart(dataSet);
     });
+
+    function toDatatableFormat(dataSet) {
+        var datatablesArray = [];
+        var array;
+        Object.keys(dataSet).forEach(function (key) {
+            array = [
+                dataSet[key][0],
+                dataSet[key][1],
+                dataSet[key][2],
+                dataSet[key][3],
+            ]
+            datatablesArray.push(array);
+        })
+        return datatablesArray;
+    }
 
     function getCartItems() {
         if (localStorage.cart != undefined) {
@@ -210,9 +226,17 @@ $(document).ready(function () {
         return false;
     });
 
-    function getRedCrossIcon(key){
+    function getRedCrossIcon(key) {
         //la key es para asignarle el producto a la cruz
-        return '<i class="fa fa-shopping-cart fa-lg cart-item" aria-hidden="true"></i>';
+        return '<i class="fa fa-times" id="' + key + '" fa-lg cart-item" aria-hidden="true"></i>';
+    }
+
+    $(document).on('click', '.fa-times', function (e) {
+        var key = $(this).attr('id');
+    });
+
+    function removeFromCart(key) {
+
     }
 
     function addOrUpdateToCart(key, quantity) {
@@ -224,21 +248,22 @@ $(document).ready(function () {
             quantity
         ]
         if (localStorage.cart == undefined) {
-            currentCart = [];
-            currentCart.push = itemToBeAdded;
+            currentCart = {};
+            currentCart[key] = itemToBeAdded;
+            console.log(JSON.stringify(currentCart.key));
+            //currentCart.push = itemToBeAdded;
         } else {
             var present = false;
             currentCart = JSON.parse(localStorage.cart);
-            currentCart.forEach(function (element) {
-                if (itemToBeAdded[1] === element[1]) {
-                    //Si ya existe el item en el carrito, sólo actualizo el precio y la cantidad
-                    element[2] = itemToBeAdded[2];
-                    element[3] = itemToBeAdded[3];
-                    present = true;
-                }
-            });
-            if (!present) {
-                currentCart.push(itemToBeAdded);
+            currentCart[key] = itemToBeAdded;
+            console.log(JSON.stringify(currentCart.key));
+            if (currentCart[key] == null) {
+                //Inserto nuevo
+                currentCart[key] = itemToBeAdded;
+            } else {
+                //O actualizo
+                currentCart[key][2] = itemToBeAdded[2];
+                currentCart[key][3] = itemToBeAdded[3];
             }
         }
         console.log(currentCart);
