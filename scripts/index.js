@@ -212,8 +212,20 @@ $(document).ready(function () {
             quantity = parseInt($('input', '#' + key).val());
         }
         addOrUpdateToCart(key, quantity);
+        hideShowCart();
         return false;
     });
+
+    function hideShowCart() {
+        //Chequeo si tabla del carrito se esta viendo
+        if ($('.st-panel').css('display') == 'block') {
+            $('.st-button-main').click();
+            var millisecondsToWait = 350;
+            setTimeout(function () {
+                $('.st-button-main').click();
+            }, millisecondsToWait);
+        }
+    }
 
     $(document).on('click', '.quantity-left-minus', function () {
         var key = $(this).attr('id');
@@ -223,20 +235,28 @@ $(document).ready(function () {
             quantity = parseInt($('input', '#' + key).val());
         }
         addOrUpdateToCart(key, quantity);
+        hideShowCart();
         return false;
     });
 
     function getRedCrossIcon(key) {
         //la key es para asignarle el producto a la cruz
-        return '<i class="fa fa-times" id="' + key + '" fa-lg cart-item" aria-hidden="true"></i>';
+        return '<i class="fa fa-times redcross" id="' + key + '" aria-hidden="true"></i>';
     }
 
-    $(document).on('click', '.fa-times', function (e) {
+    $('#cart').on('click', '.redcross', function () {
         var key = $(this).attr('id');
+        removeFromCart(key);
     });
 
     function removeFromCart(key) {
-
+        console.log("Borrando " + key)
+        if (localStorage.cart != undefined) {
+            var currentCart = JSON.parse(localStorage.cart);
+            delete currentCart[key];
+            localStorage.cart = JSON.stringify(currentCart);
+            refreshCart(currentCart);
+        }
     }
 
     function addOrUpdateToCart(key, quantity) {
@@ -251,7 +271,6 @@ $(document).ready(function () {
             currentCart = {};
             currentCart[key] = itemToBeAdded;
             console.log(JSON.stringify(currentCart.key));
-            //currentCart.push = itemToBeAdded;
         } else {
             var present = false;
             currentCart = JSON.parse(localStorage.cart);
@@ -261,13 +280,18 @@ $(document).ready(function () {
                 //Inserto nuevo
                 currentCart[key] = itemToBeAdded;
             } else {
-                //O actualizo
+                //Actualizo
                 currentCart[key][2] = itemToBeAdded[2];
                 currentCart[key][3] = itemToBeAdded[3];
             }
         }
         console.log(currentCart);
         localStorage.cart = JSON.stringify(currentCart);
+    }
+
+    function refreshCart(dataSet) {
+        dataSet = toDatatableFormat(dataSet);
+        drawCurrentCart(dataSet);
     }
 
 });
