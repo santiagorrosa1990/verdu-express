@@ -90,15 +90,18 @@ $(document).ready(function () {
         if (cartDatatable == null) {
             cartDatatable = $('#cart').DataTable({
                 data: dataSet,
+                autoWidth: true,
                 searching: false,
                 paging: false,
+                scrollY: "130px",
+                scrollCollapse: true,
                 info: false,
                 responsive: true,
                 columns: [
-                    { title: "Quitar" },
-                    { title: "Articulo" },
-                    { title: "Precio" },
-                    { title: "Cantidad" }
+                    { "title": "", "width": "10%", "orderable": false },
+                    { "title": "Art.", "width": "50%" },
+                    { "title": "Precio", "width": "30%" },
+                    { "title": "Cant.", "width": "10%" }
                 ]
             });
         } else {
@@ -272,7 +275,6 @@ $(document).ready(function () {
             currentCart[key] = itemToBeAdded;
             console.log(JSON.stringify(currentCart.key));
         } else {
-            var present = false;
             currentCart = JSON.parse(localStorage.cart);
             currentCart[key] = itemToBeAdded;
             console.log(JSON.stringify(currentCart.key));
@@ -292,6 +294,29 @@ $(document).ready(function () {
     function refreshCart(dataSet) {
         dataSet = toDatatableFormat(dataSet);
         drawCurrentCart(dataSet);
+    }
+
+    $('.st-panel').on('click', '.order-button', function () {
+        console.log("order-button");
+        sendOrderMail();
+    });
+
+    function buildOrderData(){
+       return JSON.stringify(localStorage.cart);
+    }
+    
+    function sendOrderMail(){
+        $.ajax({
+            method: "POST",
+            url: "../model/email.php",
+            data: "order="+buildOrderData(),
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                toastr.error("Servidor ocupado, intente nuevamente", "Error");
+            }
+        });
     }
 
 });

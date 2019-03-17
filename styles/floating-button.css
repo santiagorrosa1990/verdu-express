@@ -25,6 +25,7 @@ div.st-actionContainer li{
 }
 
 .st-panel{
+	height: 250px;
 	width: 300px;
 	margin-bottom: 10%;
 	background-color: #ffffff;

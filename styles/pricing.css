@@ -31,6 +31,10 @@ html {
     visibility: hidden;
   }
 
+  .order-button {
+    float: right;
+  }
+
   /*body {
     /*background-image: url("../images/frutas2.jpg");
     background-color: #e6ffb7;
