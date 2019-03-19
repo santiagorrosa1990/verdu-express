@@ -36,12 +36,30 @@
         </div>
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4">Productos</h1>
-            <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap
-                example. It's built with default Bootstrap components and utilities with little customization.</p>
+            <p class="lead">Filtrá tu búsqueda</p>
+            <div class="btn-group btn-group-toggle products-toggler" data-toggle="buttons">
+                <label class="btn btn-secondary product-toggle" id="frutas">
+                    <input type="radio" name="options" id="frutas" autocomplete="off">
+                    Frutas
+                </label>
+                <label class="btn btn-secondary product-toggle" id="verduras">
+                    <input type="radio" name="options" id="verduras" autocomplete="off">
+                    Verduras
+                </label>
+                <label class="btn btn-secondary product-toggle" id="frutos_secos">
+                    <input type="radio" name="options" id="frutos_secos" autocomplete="off">
+                    Frutos secos
+                </label>
+                <label class="btn btn-secondary product-toggle" id="otros">
+                    <input type="radio" name="options" id="otros" autocomplete="off"> Otros
+                </label>
+            </div>
         </div>
 
         <div class="container">
-            <div class="card-deck mb-3 text-center">
+            <div class="decks-container">
+                <div class="card-deck mb-3 text-center">
+                </div>
             </div>
             <footer class="deck-footer pt-4 my-md-5 pt-md-5 border-top">
                 <div class="row">

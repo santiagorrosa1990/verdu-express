@@ -3,48 +3,84 @@
         "name": "Naranja",
         "key": "naranja",
         "price": "$50",
-        "unit": "kg"
+        "unit": "kg",
+        "type": "frutas"
     },
     {
         "name": "Pera",
         "key": "pera",
         "price": "$30",
-        "unit": "kg"
+        "unit": "kg",
+        "type": "frutas"
     },
     {
         "name": "Acelga",
         "key": "acelga",
         "price": "$28,5",
-        "unit": "atado"
+        "unit": "atado",
+        "type": "verdura"
     },
     {
         "name": "Bergamota",
         "key": "bergamota",
         "price": "$50",
-        "unit": "kg"
+        "unit": "kg",
+        "type": "fruta"
     },
     {
         "name": "Uva",
         "key": "uva",
         "price": "$55",
-        "unit": "kg"
+        "unit": "kg",
+        "type": "frutas"
     },
     {
         "name": "Cebolla Morada",
         "key": "cebolla_morada",
         "price": "$25",
-        "unit": "kg"
+        "unit": "kg",
+        "type": "verdura"
     },
     {
         "name": "Pimiento Verde",
         "key": "pimiento_verde",
         "price": "$25",
-        "unit": "unidad"
+        "unit": "unidad",
+        "type": "verdura"
     },
     {
         "name": "Pimiento Rojo",
         "key": "pimiento_rojo",
         "price": "$65",
-        "unit": "unidad"
+        "unit": "unidad",
+        "type": "verdura"
+    },
+    {
+        "name": "Palta",
+        "key": "palta",
+        "price": "$50",
+        "unit": "unidad",
+        "type": "fruta"
+    },
+    {
+        "name": "Calabacín",
+        "key": "calabacin",
+        "price": "$35",
+        "unit": "kg",
+        "type": "verdura"
+    },
+    {
+        "name": "Huevo",
+        "key": "huevo",
+        "price": "$35",
+        "unit": "docena",
+        "type": "otros"
+    },
+    {
+        "name": "Maní",
+        "key": "mani",
+        "price": "$25",
+        "unit": "100gr",
+        "type": "frutos_secos"
     }
 ]

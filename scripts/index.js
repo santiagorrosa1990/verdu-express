@@ -155,7 +155,7 @@ $(document).ready(function () {
         var rowCount = 0;
         data.forEach(function (element) {
             rowCount = rowCount + 1;
-            $(".container").find(".card-deck:last")
+            $(".decks-container").find(".card-deck:last")
                 .append(getCardTemplate(element.name, element.price, element.unit, element.key));
             if (rowCount == 3) {
                 getCardDeckTemplate()
@@ -164,8 +164,37 @@ $(document).ready(function () {
         });
     }
 
+    $('.product-toggle').on('click', function () {
+        var type = $(this).attr('id');
+        filterCardsBy(type);
+    });
+
+    function filterCardsBy(type) {
+        var rowCount = 0;
+        resetDecksContainer();
+        var data = JSON.parse(localStorage.data);
+        console.log("leido: "+data);
+        data.forEach(function (element) {
+            rowCount = rowCount + 1;
+            if (element.type == type) {
+                $(".decks-container").find(".card-deck:last")
+                    .append(getCardTemplate(element.name, element.price, element.unit, element.key));
+                if (rowCount == 3) {
+                    getCardDeckTemplate()
+                    rowCount = 0;
+                }
+            }
+        });
+    }
+
+    function resetDecksContainer() {
+        $('.decks-container').html('');
+        getCardDeckTemplate();
+    }
+
     function getCardDeckTemplate() {
-        $(' <div class="card-deck mb-3 text-center"> </div>').insertBefore('.deck-footer');
+        //$(' <div class="card-deck mb-3 text-center"> </div>').insertBefore('.deck-footer');
+        $('.decks-container').prepend('<div class="card-deck mb-3 text-center"> </div>');
     }
 
     function getCardTemplate(name, price, unit, key) {
@@ -301,15 +330,15 @@ $(document).ready(function () {
         sendOrderMail();
     });
 
-    function buildOrderData(){
-       return JSON.stringify(localStorage.cart);
+    function buildOrderData() {
+        return JSON.stringify(localStorage.cart);
     }
-    
-    function sendOrderMail(){
+
+    function sendOrderMail() {
         $.ajax({
             method: "POST",
             url: "../model/email.php",
-            data: "order="+buildOrderData(),
+            data: "order=" + buildOrderData(),
             success: function (data) {
                 console.log(data);
             },
