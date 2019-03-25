@@ -173,7 +173,7 @@ $(document).ready(function () {
         var rowCount = 0;
         resetDecksContainer();
         var data = JSON.parse(localStorage.data);
-        console.log("leido: "+data);
+        console.log("leido: " + data);
         data.forEach(function (element) {
             rowCount = rowCount + 1;
             if (element.type == type) {
@@ -327,8 +327,29 @@ $(document).ready(function () {
 
     $('.st-panel').on('click', '.order-button', function () {
         console.log("order-button");
+        showAddressModal();
         sendOrderMail();
     });
+
+    $('.st-panel').on('click', '.addresses-button', function () {
+        showAddressesModal();
+    });
+
+    function showAddressesModal() {
+        $('.st-button-main').click();
+        $('#addresses-modal').modal();
+    }
+
+    function closeCart() {
+        //Chequeo si tabla del carrito se esta viendo
+        if ($('.st-panel').css('display') == 'block') {
+            $('.st-button-main').click();
+            var millisecondsToWait = 350;
+            setTimeout(function () {
+                $('.st-button-main').click();
+            }, millisecondsToWait);
+        }
+    }
 
     function buildOrderData() {
         return JSON.stringify(localStorage.cart);

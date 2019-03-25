@@ -18,7 +18,7 @@
         "key": "acelga",
         "price": "$28,5",
         "unit": "atado",
-        "type": "verdura"
+        "type": "verduras"
     },
     {
         "name": "Bergamota",
@@ -39,21 +39,21 @@
         "key": "cebolla_morada",
         "price": "$25",
         "unit": "kg",
-        "type": "verdura"
+        "type": "verduras"
     },
     {
         "name": "Pimiento Verde",
         "key": "pimiento_verde",
         "price": "$25",
         "unit": "unidad",
-        "type": "verdura"
+        "type": "verduras"
     },
     {
         "name": "Pimiento Rojo",
         "key": "pimiento_rojo",
         "price": "$65",
         "unit": "unidad",
-        "type": "verdura"
+        "type": "verduras"
     },
     {
         "name": "Palta",
@@ -67,7 +67,7 @@
         "key": "calabacin",
         "price": "$35",
         "unit": "kg",
-        "type": "verdura"
+        "type": "verduras"
     },
     {
         "name": "Huevo",
