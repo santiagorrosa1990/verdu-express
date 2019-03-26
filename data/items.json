@@ -96,14 +96,6 @@
         "image": "banana.jpg"
     },
     {
-        "name": "Banana",
-        "key": "banana",
-        "price": "$25",
-        "unit": "kg",
-        "type": "fruta",
-        "image": "banana.jpg"
-    },
-    {
         "name": "Manzana Chica",
         "key": "Manzana_chica",
         "price": "$25",

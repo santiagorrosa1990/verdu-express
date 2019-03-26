@@ -204,7 +204,7 @@ $(document).ready(function () {
             '</div>' +
             '<div class="card-body">' +
             '<h1 id="' + key + '" price="' + price + '" unit="' + unit + '" class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
-            '<img src="./images/banana.jpeg" id="item-image">'+
+            '<img src="./images/' + key + '.jpeg" onerror="javascript:this.src=\'./images/noimage.png\'" id="item-image">' +
             '<div class="counter col-lg-2">' +
             '<div class="input-group">' +
             '<span class="input-group-btn">' +
@@ -227,7 +227,6 @@ $(document).ready(function () {
             '</div>'
 
         return card;
-
     }
 
     //////ADD REMOVE BUTTONS///////
@@ -328,23 +327,15 @@ $(document).ready(function () {
     });
 
     $('.st-panel').on('click', '.addresses-button', function () {
+        //var addressData = fetchAddressData();
         showAddressesModal();
     });
 
     function showAddressesModal() {
+        $('#user-address-input').val("viva el tinto");
         $('.st-button-main').click();
         $('#addresses-modal').modal();
-    }
-
-    function closeCart() {
-        //Chequeo si tabla del carrito se esta viendo
-        if ($('.st-panel').css('display') == 'block') {
-            $('.st-button-main').click();
-            var millisecondsToWait = 350;
-            setTimeout(function () {
-                $('.st-button-main').click();
-            }, millisecondsToWait);
-        }
+        $('#user-address-input').val("viva el tinto");
     }
 
     function buildOrderData() {
