@@ -4,42 +4,48 @@
         "key": "naranja",
         "price": "$50",
         "unit": "kg",
-        "type": "frutas"
+        "type": "frutas",
+        "image": "naranja.jpg"
     },
     {
         "name": "Pera",
         "key": "pera",
         "price": "$30",
         "unit": "kg",
-        "type": "frutas"
+        "type": "frutas",
+        "image": "pera.jpg"
     },
     {
         "name": "Acelga",
         "key": "acelga",
         "price": "$28,5",
         "unit": "atado",
-        "type": "verduras"
+        "type": "verduras",
+        "image": "acelga.jpg"
     },
     {
         "name": "Bergamota",
         "key": "bergamota",
         "price": "$50",
         "unit": "kg",
-        "type": "fruta"
+        "type": "fruta",
+        "image": "bergamota.jpg"
     },
     {
         "name": "Uva",
         "key": "uva",
         "price": "$55",
         "unit": "kg",
-        "type": "frutas"
+        "type": "frutas",
+        "image": "uva.jpg"
     },
     {
         "name": "Cebolla Morada",
         "key": "cebolla_morada",
         "price": "$25",
         "unit": "kg",
-        "type": "verduras"
+        "type": "verduras",
+        "image": "cebolla_morada.jpg"
     },
     {
         "name": "Pimiento Verde",
