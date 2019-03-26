@@ -27,6 +27,11 @@ html {
     min-width: 220px;
   }
 
+  #item-image {
+    width: 100px;
+    height: 100px;
+  }
+
   .hidden {
     visibility: hidden;
   }

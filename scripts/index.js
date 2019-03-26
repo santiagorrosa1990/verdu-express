@@ -3,7 +3,7 @@ $(document).ready(function () {
     var cartDatatable = null;
     //Duracion del efectito del boton flotante
     $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
-
+    toastr.info("Bienvenido", "Hola");
     getData();
 
     getAddresses("987654321");
@@ -204,12 +204,13 @@ $(document).ready(function () {
             '</div>' +
             '<div class="card-body">' +
             '<h1 id="' + key + '" price="' + price + '" unit="' + unit + '" class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
-            '<ul class="list-unstyled mt-3 mb-4">' +
+            '<img src="./images/banana.jpeg" id="item-image">'+
+            /* '<ul class="list-unstyled mt-3 mb-4">' +
             '<li>10 users included</li>' +
             '<li>2 GB of storage</li>' +
             '<li>Email support</li>' +
             '<li>Help center access</li>' +
-            '</ul>' +
+            '</ul>' + */
             '<div class="counter col-lg-2">' +
             '<div class="input-group">' +
             '<span class="input-group-btn">' +

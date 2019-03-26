@@ -24,12 +24,12 @@
         "image": "acelga.jpg"
     },
     {
-        "name": "Bergamota",
-        "key": "bergamota",
+        "name": "mandarina",
+        "key": "mandarina",
         "price": "$50",
         "unit": "kg",
         "type": "fruta",
-        "image": "bergamota.jpg"
+        "image": "mandarina.jpg"
     },
     {
         "name": "Uva",
@@ -52,41 +52,327 @@
         "key": "pimiento_verde",
         "price": "$25",
         "unit": "unidad",
-        "type": "verduras"
+        "type": "verduras",
+        "image": "pimiento_verde.jpg"
     },
     {
         "name": "Pimiento Rojo",
         "key": "pimiento_rojo",
         "price": "$65",
         "unit": "unidad",
-        "type": "verduras"
+        "type": "verduras",
+        "image": "pimiento_rojo.jpg"
     },
     {
-        "name": "Palta",
-        "key": "palta",
+        "name": "Palta Hass",
+        "key": "palta_hass",
         "price": "$50",
         "unit": "unidad",
-        "type": "fruta"
+        "type": "fruta",
+        "image": "palta.jpg"
     },
     {
         "name": "Calabacín",
         "key": "calabacin",
         "price": "$35",
         "unit": "kg",
-        "type": "verduras"
+        "type": "verduras",
+        "image": "calabacin.jpg"
     },
     {
         "name": "Huevo",
         "key": "huevo",
         "price": "$35",
         "unit": "docena",
-        "type": "otros"
+        "type": "otros",
+        "image": "huevo_docena.jpg"
     },
     {
-        "name": "Maní",
-        "key": "mani",
+        "name": "Banana",
+        "key": "banana",
         "price": "$25",
-        "unit": "100gr",
-        "type": "frutos_secos"
+        "unit": "kg",
+        "type": "fruta",
+        "image": "banana.jpg"
+    },
+    {
+        "name": "Banana",
+        "key": "banana",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "banana.jpg"
+    },
+    {
+        "name": "Manzana Chica",
+        "key": "Manzana_chica",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "manzana_chica.jpg"
+    },
+    {
+        "name": "Manzana Grande",
+        "key": "Manzana_grande",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "manzana_grande.jpg"
+    },
+    {
+        "name": "Lechuga Manteca",
+        "key": "lechuga_manteca",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "lechuga_manteca.jpg"
+    },
+    {
+        "name": "Espinaca",
+        "key": "Espinaca",
+        "price": "$25",
+        "unit": "unidad",
+        "type": "verduras",
+        "image": "espinaca.jpg"
+    },
+    {
+        "name": "Brocoli",
+        "key": "Brocoli",
+        "price": "$25",
+        "unit": "unidad",
+        "type": "verduras",
+        "image": "Brocoli.jpg"
+    },
+    {
+        "name": "Berenjena",
+        "key": "Berenjena",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "Berenjena.jpg"
+    },
+    {
+        "name": "Apio",
+        "key": "Apio",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "apio.jpg"
+    },
+    {
+        "name": "Batata",
+        "key": "batata",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "batata.jpg"
+    },
+    {
+        "name": "champignon",
+        "key": "champignon",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "champignon.jpg"
+    },
+    {
+        "name": "cebolla",
+        "key": "cebolla",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "cebolla.jpg"
+    },
+    {
+        "name": "Puerro",
+        "key": "puerro",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "puerro.jpg"
+    },
+    {
+        "name": "remolacha",
+        "key": "remolacha",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "remolacha.jpg"
+    },
+    {
+        "name": "Zapallito Verde",
+        "key": "zapallito verde",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "zapallito_verde.jpg"
+    },
+    {
+        "name": "Manzana Verde",
+        "key": "manzana_verde",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "manzana_verde.jpg"
+    },
+    {
+        "name": "Chaucha Rolliza",
+        "key": "chaucha_rolliza",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "chaucha_rolliza.jpg"
+    },
+    {
+        "name": "Choclo",
+        "key": "choclo",
+        "price": "$25",
+        "unit": "unidad",
+        "type": "verduras",
+        "image": "choclo.jpg"
+    },
+    {
+        "name": "kiwi",
+        "key": "kiwi",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "kiwi.jpg"
+    },
+    {
+        "name": "lechuguin",
+        "key": "lechuguin",
+        "price": "$25",
+        "unit": "unidad",
+        "type": "verduras",
+        "image": "lechuguin.jpg"
+    },
+    {
+        "name": "Limon",
+        "key": "limon",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "limon.jpg"
+    },
+    {
+        "name": "Papa",
+        "key": "papa",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "papa.jpg"
+    },
+    {
+        "name": "Cebolla de verdeo",
+        "key": "cebolla_de_verdeo",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "cebolla_de_verdeo.jpg"
+    },
+    {
+        "name": "Zanahoria",
+        "key": "zanahoria",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "zanahoria.jpg"
+    },
+    {
+        "name": "Tomate Redondo",
+        "key": "tomate_redondo",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "tomate_redondo.jpg"
+    },
+    {
+        "name": "Tomate Perita",
+        "key": "tomate_perita",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "tomate_perita.jpg"
+    },
+    {
+        "name": "Tomate Cherry",
+        "key": "tomate_cherry",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "tomate_cherry.jpg"
+    },
+    {
+        "name": "Pomelo Rosado",
+        "key": "pomelo_rosado",
+        "price": "$25",
+        "unit": "kg",
+        "type": "fruta",
+        "image": "pomelo_rosado.jpg"
+    },
+    {
+        "name": "Repollo Blanco",
+        "key": "repollo_blanco",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "repollo_blanco.jpg"
+    },
+    {
+        "name": "Repollo Morado",
+        "key": "repollo_morado",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "repollo_morado.jpg"
+    },
+    {
+        "name": "Rucula",
+        "key": "rucula",
+        "price": "$25",
+        "unit": "unidad",
+        "type": "verduras",
+        "image": "rucula.jpg"
+    },
+    {
+        "name": "Zapallo Brasilero",
+        "key": "zapallo_brasilero",
+        "price": "$25",
+        "unit": "unidad",
+        "type": "verduras",
+        "image": "zapallo_brasilero.jpg"
+    },
+    {
+        "name": "Zucchini",
+        "key": "zucchini",
+        "price": "$25",
+        "unit": "kg",
+        "type": "verduras",
+        "image": "zucchini.jpg"
+    },
+    {
+        "name": "Mix Comun",
+        "key": "mix_comun",
+        "price": "$25",
+        "unit": "kg",
+        "type": "frutos_secos",
+        "image": "mix_comun.jpg"
+    },
+    {
+        "name": "Mix Tropical",
+        "key": "mix_tropical",
+        "price": "$25",
+        "unit": "kg",
+        "type": "frutos_secos",
+        "image": "mix_tropical.jpg"
+    },
+    {
+        "name": "Maple de Huevo",
+        "key": "maple_huevo",
+        "price": "$25",
+        "unit": "unidad",
+        "type": "otros",
+        "image": "maple_huevo.jpg"
     }
 ]
