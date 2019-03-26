@@ -200,17 +200,11 @@ $(document).ready(function () {
     function getCardTemplate(name, price, unit, key) {
         var card = '<div id="' + key + '" class="card mb-4 shadow-sm">' +
             '<div class="card-header">' +
-            '<h4 class="my-0 card-name" name="' + name + '" id="' + key + '" font-weight-normal">' + name + '</h4>' +
+            '<h4 class="my-0 card-name" name="' + name + '" id="' + key + '">' + name + '</h4>' +
             '</div>' +
             '<div class="card-body">' +
             '<h1 id="' + key + '" price="' + price + '" unit="' + unit + '" class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
             '<img src="./images/banana.jpeg" id="item-image">'+
-            /* '<ul class="list-unstyled mt-3 mb-4">' +
-            '<li>10 users included</li>' +
-            '<li>2 GB of storage</li>' +
-            '<li>Email support</li>' +
-            '<li>Help center access</li>' +
-            '</ul>' + */
             '<div class="counter col-lg-2">' +
             '<div class="input-group">' +
             '<span class="input-group-btn">' +
@@ -233,6 +227,7 @@ $(document).ready(function () {
             '</div>'
 
         return card;
+
     }
 
     //////ADD REMOVE BUTTONS///////
