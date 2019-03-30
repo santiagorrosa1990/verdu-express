@@ -4,7 +4,7 @@ include_once "Connection.php";
 $id = $_POST["id"];
 $addresses = $_POST["addresses"];
 try {
-$query = "INSERT INTO Users(id, addresses) VALUES ('$id','$addresses')";
+$query = "INSERT INTO Users(id, addresses) VALUES ('$id','$addresses') ON DUPLICATE KEY UPDATE addresses = '$addresses'";
 
 $conexion = Connection::conectar();
 $conexion->query($query);

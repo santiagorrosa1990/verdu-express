@@ -6,26 +6,27 @@ $(document).ready(function () {
     toastr.info("Bienvenido", "Hola");
     getData();
 
-    getAddresses("987654321");
+    //getAddress();
 
-    //postAddresses("987654321", [{"neighborhood":"Alberdi", "address":"Costanera 1234"}]);
+    postAddresses("987654321", [{ "neighborhood": "Villa Warcalde", "address": "Costanera 1234" }]);
 
-    function getAddresses(facebookId) {
-        var user_Id = "id=" + facebookId;
+    function getAddress() {
+        var sessionId = "id=" + "9876543212"// localStorage.sessionId;
+        var addressData = null;
         $.ajax({
             async: false,
             cache: false,
             method: "POST",
             url: "../model/user-get.php",
-            data: user_Id,
+            data: sessionId,
             success: function (data) {
-                console.log(JSON.parse(data));
+                addressData = JSON.parse(data);
             },
             error: function () {
-                console.log("Error al obtener user-get.php");
+                console.log("Error al obtener user-get.php del id: " + sessionId);
             }
         });
-
+        return addressData;
     }
 
     function postAddresses(facebookId, jsonAddresses) {
@@ -109,7 +110,7 @@ $(document).ready(function () {
         }
     }
 
-    function getAddress() {
+    /* function getAddress() {
         var userAddress;
         $.ajax({
             async: false, //Ver de usar un wait
@@ -133,7 +134,7 @@ $(document).ready(function () {
             }
         });
         return userAddress;
-    }
+    } */
 
     function getData() {
         $.ajax({
@@ -204,7 +205,7 @@ $(document).ready(function () {
             '</div>' +
             '<div class="card-body">' +
             '<h1 id="' + key + '" price="' + price + '" unit="' + unit + '" class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
-            '<img src="./images/' + key + '.jpeg" onerror="javascript:this.src=\'./images/noimage.png\'" id="item-image">' +
+            //'<img src="./images/' + key + '.jpeg" onerror="javascript:this.src=\'./images/noimage.png\'" id="item-image">' +
             '<div class="counter col-lg-2">' +
             '<div class="input-group">' +
             '<span class="input-group-btn">' +
@@ -327,15 +328,19 @@ $(document).ready(function () {
     });
 
     $('.st-panel').on('click', '.addresses-button', function () {
-        //var addressData = fetchAddressData();
         showAddressesModal();
     });
 
     function showAddressesModal() {
-        $('#user-address-input').val("viva el tinto");
+        var addressData = getAddress();
+        if (addressData != null) {
+            $('[id=user-neighborhood-input] option').filter(function () {
+                return ($(this).text() == addressData[0].neighborhood);
+            }).prop('selected', true);
+            $('#user-address-input').val(addressData[0].address); 
+        }
         $('.st-button-main').click();
         $('#addresses-modal').modal();
-        $('#user-address-input').val("viva el tinto");
     }
 
     function buildOrderData() {

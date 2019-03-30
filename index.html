@@ -153,33 +153,40 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-append">
-                        <label class="input-group-text" for="inputGroupSelect02">Zona</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect02">
-                        <option selected>Elegir...</option>
-                        <option value="1">Cerro de las Rosas</option>
-                        <option value="2">Villa Warcalde</option>
-                        <option value="3">La Salle</option>
-                    </select>
-                </div>
+
                 <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <label class="input-group-text" for="user-neighborhood-input">Zona</label>
+                        </div>
+                        <select class="custom-select" id="user-neighborhood-input">
+                            <option selected>Elegir...</option>
+                            <option value="1">Cerro de las Rosas</option>
+                            <option value="2">Villa Warcalde</option>
+                            <option value="3">La Salle</option>
+                        </select>
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Dirección</span>
                         </div>
-                        <input type="text" class="form-control" id="user-address-input" aria-label="Default"
+                        <input type="text" class="form-control" id="user-address-input"
+                            placeholder="Ej: Ricardo Rojas 1433" value="" aria-label="Default"
                             aria-describedby="inputGroup-sizing-default">
+
                     </div>
-                </div>
-                <div class="modal-footer">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Celular</span>
+                        </div>
+                        <input type="text" class="form-control" id="user-phone-input" placeholder="Ej: 3517319532"
+                            value="" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
-
 
 </body>
 

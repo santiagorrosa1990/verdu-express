@@ -1,4 +1,3 @@
-
 window.fbAsyncInit = function () {
     FB.init({
         appId: '345256212743918',
@@ -6,13 +5,13 @@ window.fbAsyncInit = function () {
         xfbml: true,
         version: 'v3.2'
     });
-    
-    FB.getLoginStatus(function(response) {
-        if(response.status == "connected"){
+
+    FB.getLoginStatus(function (response) {
+        if (response.status == "connected") {
             toastr.success('Bienvenido');
             console.log("Sesion iniciada");
         } else {
-            $('.facebook-btn').css('visibility','visible');
+            $('.facebook-btn').css('visibility', 'visible');
             console.log("Sesion no iniciada");
         }
     });
@@ -22,13 +21,13 @@ window.fbAsyncInit = function () {
 };
 
 
-$('.facebook-btn').on('click', function(){
-    FB.login(function(response){
+$('.facebook-btn').on('click', function () {
+    FB.login(function (response) {
         console.log("Sesion iniciada");
-        $('.facebook-btn').css('visibility','hidden');
+        $('.facebook-btn').css('visibility', 'hidden');
         // Handle the response object, like in statusChangeCallback() in our demo
         // code.
-      });
+    });
 
 });
 
