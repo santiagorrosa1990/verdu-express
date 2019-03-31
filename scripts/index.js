@@ -131,7 +131,7 @@ $(document).ready(function () {
         data.forEach(function (element) {
             rowCount = rowCount + 1;
             $(".decks-container").find(".card-deck:last")
-                .append(getCardTemplate(element.name, element.price, element.unit, element.key));
+                .append(getCardTemplate(element.name, element.price, element.unit, element.key, element.image));
             if (rowCount == 3) {
                 addCardDeckTemplate();
                 rowCount = 0;
@@ -152,7 +152,7 @@ $(document).ready(function () {
             rowCount = rowCount + 1;
             if (element.type == type) {
                 $(".decks-container").find(".card-deck:last")
-                    .append(getCardTemplate(element.name, element.price, element.unit, element.key));
+                    .append(getCardTemplate(element.name, element.price, element.unit, element.key, element.image));
                 if (rowCount == 3) {
                     addCardDeckTemplate();
                     rowCount = 0;
@@ -171,14 +171,14 @@ $(document).ready(function () {
         $('.decks-container').append('<div class="card-deck mb-3 text-center"> </div>');
     }
 
-    function getCardTemplate(name, price, unit, key) {
+    function getCardTemplate(name, price, unit, key, image) {
         var card = '<div id="' + key + '" class="card mb-4 shadow-sm">' +
             '<div class="card-header">' +
             '<h4 class="my-0 card-name" name="' + name + '" id="' + key + '">' + name + '</h4>' +
             '</div>' +
             '<div class="card-body">' +
             '<h1 id="' + key + '" price="' + price + '" unit="' + unit + '" class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
-            '<img src="./images/' + key + '.jpg" id="item-image">' +
+            '<img src="./images/' + image + '" id="item-image">' +
             '<div class="counter col-lg-2">' +
             '<div class="input-group">' +
             '<span class="input-group-btn">' +
@@ -199,7 +199,7 @@ $(document).ready(function () {
             '</div>' +
             '</div>' +
             '</div>'
-            // onerror="javascript:this.src=\'./images/noimage.png\'"
+        // onerror="javascript:this.src=\'./images/noimage.png\'"
         return card;
     }
 
@@ -311,13 +311,14 @@ $(document).ready(function () {
         var userName = $('#user-name-input').val();
         //Por ahora mantenemos todo en localstorage
         //postAddresses(phone, [{ "neighborhood": neighborhood, "address": address, "user_name": userName, "phone": phone }]);
-        localStorage.data = JSON.stringify([{ "neighborhood": neighborhood, "address": address, "user_name": userName, "phone": phone }]);
+        localStorage.user_data = JSON.stringify([{ "neighborhood": neighborhood, "address": address, "user_name": userName, "phone": phone }]);
+        console.log("Guardado");
     });
 
     function showAddressesModal() {
         var userData = null;
-        if (localStorage.data != undefined) {
-            userData = JSON.parse(localStorage.data);
+        if (localStorage.user_data != undefined) {
+            userData = JSON.parse(localStorage.user_data);
             //var addressData = getUserData();
         }
         if (userData != null) {

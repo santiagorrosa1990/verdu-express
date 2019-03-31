@@ -21,14 +21,14 @@
         "price": "$28,5",
         "unit": "atado",
         "type": "verduras",
-        "image": "acelga.jpg"
+        "image": "acelga_atado.jpg"
     },
     {
         "name": "mandarina",
         "key": "mandarina",
         "price": "$50",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "mandarina.jpg"
     },
     {
@@ -85,7 +85,7 @@
         "price": "$35",
         "unit": "docena",
         "type": "otros",
-        "image": "huevo_docena.jpg"
+        "image": "huevo.jpg"
     },
     {
         "name": "Banana",
@@ -93,7 +93,7 @@
         "price": "$25",
         "unit": "kg",
         "type": "frutas",
-        "image": "banana.jpg"
+        "image": "banana.jpeg"
     },
     {
         "name": "Manzana Chica",
@@ -108,7 +108,7 @@
         "key": "Manzana_grande",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "manzana_grande.jpg"
     },
     {
@@ -117,7 +117,7 @@
         "price": "$25",
         "unit": "kg",
         "type": "verduras",
-        "image": "lechuga_manteca.jpg"
+        "image": "lechuga_repollada.jpg"
     },
     {
         "name": "Espinaca",
@@ -125,7 +125,7 @@
         "price": "$25",
         "unit": "unidad",
         "type": "verduras",
-        "image": "espinaca.jpg"
+        "image": "espinaca_de_invierno.jpg"
     },
     {
         "name": "Brocoli",
@@ -133,7 +133,7 @@
         "price": "$25",
         "unit": "unidad",
         "type": "verduras",
-        "image": "Brocoli.jpg"
+        "image": "brocoli.jpg"
     },
     {
         "name": "Berenjena",
@@ -141,7 +141,7 @@
         "price": "$25",
         "unit": "kg",
         "type": "verduras",
-        "image": "Berenjena.jpg"
+        "image": "berenjena.jpg"
     },
     {
         "name": "Apio",
@@ -204,7 +204,7 @@
         "key": "manzana_verde",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "manzana_verde.jpg"
     },
     {
@@ -228,7 +228,7 @@
         "key": "kiwi",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "kiwi.jpg"
     },
     {
@@ -244,7 +244,7 @@
         "key": "limon",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "limon.jpg"
     },
     {
@@ -276,7 +276,7 @@
         "key": "tomate_redondo",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "tomate_redondo.jpg"
     },
     {
@@ -284,7 +284,7 @@
         "key": "tomate_perita",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "tomate_perita.jpg"
     },
     {
@@ -292,7 +292,7 @@
         "key": "tomate_cherry",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "tomate_cherry.jpg"
     },
     {
@@ -300,7 +300,7 @@
         "key": "pomelo_rosado",
         "price": "$25",
         "unit": "kg",
-        "type": "frutas",
+        "type": "fruta",
         "image": "pomelo_rosado.jpg"
     },
     {
@@ -365,6 +365,6 @@
         "price": "$25",
         "unit": "unidad",
         "type": "otros",
-        "image": "maple_huevo.jpg"
+        "image": "huevo.jpg"
     }
 ]
