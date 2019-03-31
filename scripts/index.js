@@ -133,7 +133,7 @@ $(document).ready(function () {
             $(".decks-container").find(".card-deck:last")
                 .append(getCardTemplate(element.name, element.price, element.unit, element.key));
             if (rowCount == 3) {
-                getCardDeckTemplate()
+                addCardDeckTemplate();
                 rowCount = 0;
             }
         });
@@ -148,14 +148,13 @@ $(document).ready(function () {
         var rowCount = 0;
         resetDecksContainer();
         var data = JSON.parse(localStorage.data);
-        console.log("leido: " + data);
         data.forEach(function (element) {
             rowCount = rowCount + 1;
             if (element.type == type) {
                 $(".decks-container").find(".card-deck:last")
                     .append(getCardTemplate(element.name, element.price, element.unit, element.key));
                 if (rowCount == 3) {
-                    getCardDeckTemplate()
+                    addCardDeckTemplate();
                     rowCount = 0;
                 }
             }
@@ -164,12 +163,12 @@ $(document).ready(function () {
 
     function resetDecksContainer() {
         $('.decks-container').html('');
-        getCardDeckTemplate();
+        addCardDeckTemplate();
     }
 
-    function getCardDeckTemplate() {
+    function addCardDeckTemplate() {
         //$(' <div class="card-deck mb-3 text-center"> </div>').insertBefore('.deck-footer');
-        $('.decks-container').prepend('<div class="card-deck mb-3 text-center"> </div>');
+        $('.decks-container').append('<div class="card-deck mb-3 text-center"> </div>');
     }
 
     function getCardTemplate(name, price, unit, key) {
@@ -179,7 +178,7 @@ $(document).ready(function () {
             '</div>' +
             '<div class="card-body">' +
             '<h1 id="' + key + '" price="' + price + '" unit="' + unit + '" class="card-title pricing-card-title">' + price + ' <small class="text-muted">/ ' + unit + '</small></h1>' +
-            //'<img src="./images/' + key + '.jpeg" onerror="javascript:this.src=\'./images/noimage.png\'" id="item-image">' +
+            '<img src="./images/' + key + '.jpg" id="item-image">' +
             '<div class="counter col-lg-2">' +
             '<div class="input-group">' +
             '<span class="input-group-btn">' +
@@ -200,7 +199,7 @@ $(document).ready(function () {
             '</div>' +
             '</div>' +
             '</div>'
-
+            // onerror="javascript:this.src=\'./images/noimage.png\'"
         return card;
     }
 
