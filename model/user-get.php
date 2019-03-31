@@ -12,7 +12,7 @@ try {
             $json = $row["addresses"];
         }
     } else {
-        echo '{"address" : "no"}';
+        $json = 'no_data';
     }
 } catch (Exception $e) {
     echo "Ha ocurrido una excepcion en user-get";

@@ -32,7 +32,7 @@
                 <a class="support p-2 text-dark">Support</a>
                 <a class="p-2 text-dark">Pricing</a>
             </nav>
-            <a class="facebook-btn hidden btn btn-outline-primary">Entrar</a>
+            <!-- <a class="facebook-btn hidden btn btn-outline-primary">Entrar</a> -->
         </div>
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4">Productos</h1>
@@ -129,7 +129,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 
-    <script src="./scripts/facebook.js"></script>
+    <!-- <script src="./scripts/facebook.js"></script> -->
     <script src="./scripts/toastr.js"></script>
     <script src="./scripts/floating-button.js"></script>
     <script src="./scripts/index.js"></script>
@@ -148,13 +148,20 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">¿Dónde te lo enviamos?</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Dejanos tus datos:</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">¿Quién recibe?</span>
+                        </div>
+                        <input type="text" class="form-control" id="user-name-input"
+                            placeholder="Ej: Juan Perez" value="" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <label class="input-group-text" for="user-neighborhood-input">Zona</label>
@@ -173,7 +180,6 @@
                         <input type="text" class="form-control" id="user-address-input"
                             placeholder="Ej: Ricardo Rojas 1433" value="" aria-label="Default"
                             aria-describedby="inputGroup-sizing-default">
-
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -182,7 +188,18 @@
                         <input type="text" class="form-control" id="user-phone-input" placeholder="Ej: 3517319532"
                             value="" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Guardar</button>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <label class="input-group-text" for="user-neighborhood-input">Horario</label>
+                        </div>
+                        <select class="custom-select" id="user-neighborhood-input">
+                            <option selected>Elegir...</option>
+                            <option value="1">16:00 a 17:00</option>
+                            <option value="2">17:00 a 18:00</option>
+                            <option value="3">18:00 a 19:00</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-secondary" id="save-address-btn" data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>

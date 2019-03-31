@@ -4,14 +4,11 @@ $(document).ready(function () {
     //Duracion del efectito del boton flotante
     $('st-actionContainer').launchBtn({ openDuration: 200, closeDuration: 100 });
     toastr.info("Bienvenido", "Hola");
-    getData();
+    getProductData();
 
-    //getAddress();
 
-    postAddresses("987654321", [{ "neighborhood": "Villa Warcalde", "address": "Costanera 1234" }]);
-
-    function getAddress() {
-        var sessionId = "id=" + "9876543212"// localStorage.sessionId;
+    function getUserData() {
+        var sessionId = localStorage.data;
         var addressData = null;
         $.ajax({
             async: false,
@@ -20,7 +17,10 @@ $(document).ready(function () {
             url: "../model/user-get.php",
             data: sessionId,
             success: function (data) {
-                addressData = JSON.parse(data);
+                data = data.replace(/\n/g, '').trim();
+                if (data != 'no_data') {
+                    addressData = JSON.parse(data);
+                }
             },
             error: function () {
                 console.log("Error al obtener user-get.php del id: " + sessionId);
@@ -29,8 +29,8 @@ $(document).ready(function () {
         return addressData;
     }
 
-    function postAddresses(facebookId, jsonAddresses) {
-        request = "id=" + facebookId + "&addresses=" + JSON.stringify(jsonAddresses);
+    function postAddresses(phone, userData) {
+        request = "id=" + phone + "&data=" + JSON.stringify(userData);
         $.ajax({
             async: false,
             cache: false,
@@ -110,33 +110,7 @@ $(document).ready(function () {
         }
     }
 
-    /* function getAddress() {
-        var userAddress;
-        $.ajax({
-            async: false, //Ver de usar un wait
-            cache: false,
-            method: "GET",
-            url: "./data/users.json",
-            dataType: "json",
-            success: function (data) {
-                FB.getLoginStatus(function (response) {
-                    if (response.status == "connected") {
-                        var id = response.authResponse.userID;
-                        userAddress = data[id].address;
-                    } else {
-                        console.log("No hay dirección");
-                        userAddress = "No cargada";
-                    }
-                });
-            },
-            error: function () {
-                console.log("Error al cargar el listado");
-            }
-        });
-        return userAddress;
-    } */
-
-    function getData() {
+    function getProductData() {
         $.ajax({
             cache: false,
             method: "GET",
@@ -331,13 +305,29 @@ $(document).ready(function () {
         showAddressesModal();
     });
 
+    $('#save-address-btn').on('click', function () {
+        var phone = $('#user-phone-input').val();
+        var neighborhood = $('#user-neighborhood-input').val();
+        var address = $('#user-address-input').val();
+        var userName = $('#user-name-input').val();
+        //Por ahora mantenemos todo en localstorage
+        //postAddresses(phone, [{ "neighborhood": neighborhood, "address": address, "user_name": userName, "phone": phone }]);
+        localStorage.data = JSON.stringify([{ "neighborhood": neighborhood, "address": address, "user_name": userName, "phone": phone }]);
+    });
+
     function showAddressesModal() {
-        var addressData = getAddress();
-        if (addressData != null) {
+        var userData = null;
+        if (localStorage.data != undefined) {
+            userData = JSON.parse(localStorage.data);
+            //var addressData = getUserData();
+        }
+        if (userData != null) {
+            $('#user-phone-input').val(userData[0].phone);
+            $('#user-name-input').val(userData[0].user_name);
             $('[id=user-neighborhood-input] option').filter(function () {
-                return ($(this).text() == addressData[0].neighborhood);
+                return ($(this).text() == userData[0].neighborhood);
             }).prop('selected', true);
-            $('#user-address-input').val(addressData[0].address); 
+            $('#user-address-input').val(userData[0].address);
         }
         $('.st-button-main').click();
         $('#addresses-modal').modal();
